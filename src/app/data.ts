@@ -1,343 +1,185 @@
-import type { StaticImageData } from "next/image";
-
-import {
-    OrmsOdmsImage,
-    TsGenericsImage,
-    TsReactImage,
-    UtilityTypesImage,
-} from "@/assets/blogs";
-import {
-    AirwatchImage,
-    LibraryImage,
-    SkygazeImage,
-    TodoImage,
-    VIPSImage,
-    VueBitsImage,
-} from "@/assets/projects";
-
 export interface IProjectData {
-    LIVE_PREVIEW?: string;
-    GITHUB?: string;
-    DESCRIPTION: string[];
-    NOTE?: string;
-    TECH_STACK: string[];
-    IMAGE: StaticImageData;
+  LIVE_PREVIEW?: string;
+  GITHUB?: string;
+  DESCRIPTION: string[];
+  NOTE?: string;
+  TECH_STACK: string[];
 }
-
-export interface IBlogData {
-    DATE: string;
-    TIME: string;
-    LINK: string;
-    DESCRIPTION: string;
-    IMAGE?: StaticImageData;
-}
-
-export const GITHUB_USERNAME = "Utkarsh-Singhal-26";
 
 export const DATA = {
-    HEADER: {
-        NAME: "Utkarsh Singhal",
-        AGE: "21",
-        PRONOUN: "he/him",
-        HEADLINE:
-            "Passionate about building high-performance and scalable web applications.",
-        RESUME: "https://drive.google.com/file/d/1piWpArbdbjt4PKF4gZlR0nkD09au_8fE/view",
-        EMAIL: "mailto:singhalutkarsh26@gmail.com",
-        GITHUB: "https://github.com/Utkarsh-Singhal-26",
-        LINKEDIN: "https://www.linkedin.com/in/singhalutkarsh26",
-        INTRO: "Hey! I'm a full-stack developer who loves building efficient, scalable, and intuitive applications. I thrive on solving complex problems, optimizing performance, and creating seamless user experiences.",
-        EXPERTISE:
-            "My expertise lies in Next.js, TypeScript, Node.js, and Cloud technologies, and I enjoy working across the stack to bring ideas to life.",
-    },
+  HEADER: {
+    NAME: "Syeda Khadeeja",
+    PRONOUN: "she/her",
+    HEADLINE: "Creative Computing Student · Web Developer",
+    RESUME: "/resume.pdf",
+    EMAIL: "mailto:s.khdeej@gmail.com",
+    GITHUB: "https://github.com/khdeej-ay",
+    LINKEDIN: "https://www.linkedin.com/in/khdeej",
+  },
 
-    EXPERIENCE: {
-        Suraasa: {
-            WEBSITE: "https://www.suraasa.com/",
-            POSITION: "SDE - 1 Backend",
-            LOCATION: "Hybrid",
-            DURATION: "Oct, 2025 - Present",
-            DESCRIPTION: [
-                "Developed and maintained backend services and APIs to support product features and integrations.",
-                "Worked on reliability, security, and performance improvements across services, including caching and monitoring.",
-                "Collaborated with frontend, platform, and DevOps teams to design APIs, event-driven workflows, and developer-facing documentation.",
-            ],
-            TECH_STACK: [
-                "TypeScript",
-                "Node.js",
-                "Python",
-                "Django",
-                "AdonisJS",
-                "PostgreSQL",
-                "MongoDB",
-                "Redis",
-                "Git & GitHub",
-            ],
-        },
-        "Aardo Solutions": {
-            WEBSITE: "https://www.aardosolutions.com/",
-            POSITION: "Software Developer",
-            LOCATION: "Remote",
-            DURATION: "Nov, 2024 - Sep, 2025",
-            DESCRIPTION: [
-                "Developed and maintained scalable web applications to enhance user engagement and operational efficiency.",
-                "Hosted and managed servers on AWS EC2, configured domains, and implemented SSL certificates for secure access.",
-                "Collaborated with cross-functional teams to design and implement scalable solutions.",
-                "Utilized modern frameworks and libraries to ensure responsive and dynamic user interfaces.",
-            ],
-            TECH_STACK: [
-                "TypeScript",
-                "React.js",
-                "Next.js",
-                "Tailwind CSS",
-                "ShadCN",
-                "Node.js",
-                "Express.js",
-                "MongoDB",
-                "Firebase",
-                "Contentful",
-                "AWS",
-                "GCP",
-                "Vercel",
-                "Nginx",
-                "Git & Github",
-            ],
-        },
-        "Vivekananda Institute of Professional Studies - Technical Campus (VIPS-TC)":
-            {
-                WEBSITE: "https://vips.edu/",
-                POSITION: "Software Developer Intern",
-                LOCATION: "Hybrid - Delhi, India",
-                DURATION: "Nov, 2023 - Jun, 2025",
-                DESCRIPTION: [
-                    "Assisted in the development of full-stack applications to support academic initiatives.",
-                    "Implemented cloud-based solutions using Google Cloud Platform (GCP) services.",
-                    "Participated in code reviews and contributed to the optimization of existing codebases.",
-                ],
-                TECH_STACK: [
-                    "React.js",
-                    "Tailwind CSS",
-                    "Material UI",
-                    "Firebase",
-                    "GCP",
-                    "Vercel",
-                    "Git & Github",
-                ],
-            },
-        Requestly: {
-            WEBSITE: "https://requestly.com/",
-            POSITION: "Product Engineer Intern",
-            LOCATION: "Hybrid - Delhi, India",
-            DURATION: "Aug, 2024 - Oct, 2024",
-            DESCRIPTION: [
-                "Researched and analyzed various API testing platforms (Kubesense, LevoAI, Wallarm, Traceable, Safe Security, Keploy) to evaluate features, security, and integration capabilities.",
-                "Worked extensively with AWS services (Lambda, Kinesis, S3, API Gateway, EC2, Route 53) to manage infrastructure, automate processes, and optimize security configurations.",
-                "Built a To-Do Chrome Extension using Chrome Storage API, enabling users to save and manage tasks directly within their browser.",
-            ],
-            TECH_STACK: [
-                "TypeScript",
-                "React.js",
-                "Tailwind CSS",
-                "AWS",
-                "Chrome Extensions",
-                "Git & Github",
-            ],
-        },
-    },
+  ABOUT_ME: {
+    INTRO:
+      "I'm a final-year Creative Computing student and a self-described multipotentialite — someone who thrives across disciplines rather than specialising in just one. Over the past 3 years, I've built a range of frontend and full-stack web projects, designed Figma prototypes, developed Android applications, and recently started exploring machine learning. Right now, I'm building a startup as part of my university coursework, while also dipping into cybersecurity and physical computing. Outside of tech, I'm passionate about reading, crocheting, cooking, and baking.",
+  },
 
-    PROJECTS: {
-        "VIPS-TC": {
-            LIVE_PREVIEW: "https://vips.edu",
-            DESCRIPTION: [
-                "Contributed to the development and maintenance of the main VIPS-TC website.",
-                "Implemented various front-end features using modern React and Material UI libraries.",
-                "Ensured responsive design and cross-browser compatibility for a seamless user experience.",
-                "Collaborated with the team to enhance website performance and accessibility.",
-            ],
-            TECH_STACK: [
-                "React.js",
-                "Material UI",
-                "Axios",
-                "Firebase",
-                "Styled Components",
-                "Razorpay",
-                "XLSX",
-            ],
-            IMAGE: VIPSImage,
-        },
-        "Vue Bits": {
-            SLUG: "vue-bits",
-            LIVE_PREVIEW: "https://vue-bits.dev/",
-            GITHUB: "https://github.com/DavidHDev/vue-bits",
-            DESCRIPTION: [
-                "Contributed 20+ components to the largest and most creative library of animated Vue components.",
-                "Helped develop highly customizable animated UI elements for modern web projects, including text animations, backgrounds, and interactive visuals.",
-                "Components are designed for seamless integration with Vue.js and Nuxt projects, providing minimal dependencies and flexible prop-based customization.",
-                "Open-source collection growing weekly, inspired by the React Bits project.",
-            ],
-            TECH_STACK: ["Vue.js", "TypeScript", "Tailwind CSS"],
-            IMAGE: VueBitsImage,
-        },
-        "Digital Library, VIPS-TC": {
-            LIVE_PREVIEW: "https://btech.library.vips.edu/",
-            DESCRIPTION: [
-                "Developed and launched a functional library website for a technical institution.",
-                "Implemented user-friendly interface to improve accessibility of library resources.",
-                "Designed responsive layout ensuring compatibility across desktop and mobile devices",
-            ],
-            TECH_STACK: ["React.js", "Tailwind CSS", "Firebase"],
-            IMAGE: LibraryImage,
-        },
-        "Skygaze India": {
-            LIVE_PREVIEW: "https://www.skygazeindia.com/",
-            DESCRIPTION: [
-                "Integrated the Razorpay payment gateway to enable secure and seamless transactions",
-                "Built a high-performance UI using Next.js and TypeScript, optimizing user experience and system efficiency.",
-            ],
-            TECH_STACK: [
-                "React.js",
-                "Next.js",
-                "TypeScript",
-                "Tailwind CSS",
-                "Razorpay",
-                "Firebase",
-                "GCP",
-            ],
-            IMAGE: SkygazeImage,
-        },
-        "AirWatch PWA": {
-            LIVE_PREVIEW: "https://airwatch-pwa-app.vercel.app/",
-            GITHUB: "https://github.com/Utkarsh-Singhal-26/airwatch-pwa-app",
-            DESCRIPTION: [
-                "Built a fully responsive, offline-capable Progressive Web App (PWA) using Next.js 15 to monitor air quality in real-time.",
-                "Integrated Firebase Cloud Messaging for push notifications and AI-powered smart insights using Groq SDK.",
-                "Implemented interactive charts with Recharts and Google Maps for detailed visualizations.",
-                "Designed a beautiful UI using TailwindCSS, ShadCN UI, and Lucide Icons with strong TypeScript typing and scalable architecture.",
-            ],
-            TECH_STACK: [
-                "Next.js",
-                "ShadCN UI",
-                "Tailwind CSS",
-                "TypeScript",
-                "Firebase",
-                "Recharts",
-                "Google Maps API",
-                "Groq SDK",
-                "PWA",
-            ],
-            IMAGE: AirwatchImage,
-        },
-        "ToDo Extension with Chrome Storage API": {
-            LIVE_PREVIEW: "https://todo-extension-webapp.vercel.app/",
-            GITHUB: "https://github.com/Utkarsh-Singhal-26/todo-extension",
-            DESCRIPTION: [
-                "Developed and launched a Chrome extension for task management using Chrome Storage API.",
-                "Implemented user-friendly interface to enhance productivity and task tracking.",
-                "Designed responsive layout ensuring seamless experience across different screen sizes and browsers.",
-                "Integrated message broadcasting for real-time updates and synchronization",
-            ],
-            NOTE: "Note: The extension is not published on the Chrome Web Store.",
-            TECH_STACK: [
-                "TypeScript",
-                "React.js",
-                "Tailwind CSS",
-                "Borwser Extension",
-                "Chrome Storage API",
-                "Message Broadcasting",
-            ],
-            IMAGE: TodoImage,
-        },
+  EXPERIENCE: {
+    "Real Estate Client": {
+      WEBSITE: "#",
+      POSITION: "Frontend Developer",
+      LOCATION: "Freelance",
+      DURATION: "Jan 2025 – Jun 2025",
+      DESCRIPTION: [
+        "Led frontend development for a full-stack responsive real estate website, building interactive pages with React.js and React Router.",
+        "Implemented dynamic property listings, responsive image galleries, and contact forms with a strong focus on layout consistency across mobile, tablet, and desktop.",
+        "Manually tested and iterated on responsive behaviour across all major device sizes to ensure a polished user experience.",
+      ],
+      TECH_STACK: ["React.js", "React Router", "CSS", "Responsive Design"],
     },
+    "Hacktoberfest 2024": {
+      WEBSITE: "https://hacktoberfest.com",
+      POSITION: "Open Source Contributor",
+      LOCATION: "Remote",
+      DURATION: "Oct 2024",
+      DESCRIPTION: [
+        "Contributed to 4 open-source GitHub repositories, resolving frontend and API integration bugs, enhancing UI components, and updating technical documentation.",
+      ],
+      TECH_STACK: ["Git", "GitHub", "JavaScript", "Documentation"],
+    },
+    "ISIP": {
+      WEBSITE: "#",
+      POSITION: "Media & Design Taskforce Member",
+      LOCATION: "On-site",
+      DURATION: "May 2024 – Dec 2024",
+      DESCRIPTION: [
+        "Collaborated with the project manager to redesign the organisation chart on FigJam, improving clarity and structure for over 50 team members.",
+        "Sourced 30+ high-quality stock images for the organisation's website and worked closely with the web development team to enhance visual appeal and functionality.",
+      ],
+      TECH_STACK: ["FigJam", "Figma", "Canva"],
+    },
+    "A Level Tutor": {
+      WEBSITE: "#",
+      POSITION: "Private Tutor",
+      LOCATION: "On-site",
+      DURATION: "Jun 2022 – May 2024",
+      DESCRIPTION: [
+        "Provided personalised tutoring in Mathematics, Physics, and Chemistry, helping students achieve at least a one-grade improvement.",
+        "Guided students through past paper practice, boosting critical thinking and problem-solving skills — resulting in a 15% average increase in test scores within 3 months.",
+      ],
+      TECH_STACK: ["Mathematics", "Physics", "Chemistry"],
+    },
+  },
 
-    BLOGS: {
-        "ORMs & ODMs: Choosing the Right Tool for Your Database Needs": {
-            DATE: "March 24, 2025",
-            TIME: "4",
-            LINK: "https://www.linkedin.com/pulse/orms-odms-choosing-right-tool-your-database-needs-utkarsh-singhal-dnshc/",
-            DESCRIPTION:
-                "Object-Relational Mappers (ORMs) and Object-Document Mappers (ODMs) play a crucial role in modern application development by abstracting database interactions and simplifying data management. Whether you're working with relational databases like PostgreSQL and MySQL or NoSQL databases like MongoDB, selecting the right ORM or ODM can significantly impact performance, scalability, and maintainability.",
-            IMAGE: OrmsOdmsImage,
-        },
-        "Mastering TypeScript Generics: Building Flexible and Scalable Code": {
-            DATE: "March 8, 2025",
-            TIME: "7",
-            LINK: "https://www.linkedin.com/pulse/mastering-typescript-generics-building-flexible-scalable-singhal-f77bc/",
-            DESCRIPTION:
-                "When building robust and scalable applications in TypeScript, flexibility and reusability are key. One of the most powerful features that helps achieve this is Generics. Generics allow developers to create functions, classes, and interfaces that can work with any data type, ensuring that the code is more flexible, reusable, and easier to maintain.",
-            IMAGE: TsGenericsImage,
-        },
-        "TypeScript and React: Harnessing the Full Power of Types": {
-            DATE: "March 11, 2025",
-            TIME: "6",
-            LINK: "https://www.linkedin.com/pulse/typescript-react-harnessing-full-power-types-utkarsh-singhal-6bxuc/",
-            DESCRIPTION:
-                "React has become the go-to library for building dynamic user interfaces, and TypeScript has emerged as a powerful tool for adding static types to JavaScript applications. While many developers use TypeScript with React, they often only scratch the surface of its capabilities.",
-            IMAGE: TsReactImage,
-        },
-        "Understanding Utility Types in TypeScript: Supercharging Your Codebase":
-            {
-                DATE: "March 10, 2025",
-                TIME: "7",
-                LINK: "https://www.linkedin.com/pulse/understanding-utility-types-typescript-supercharging-your-singhal-zdxwc/",
-                DESCRIPTION:
-                    "TypeScript is renowned for its ability to enhance JavaScript applications by adding static typing. However, when working with complex types, developers often find themselves repeating type definitions or restructuring types to fit different contexts. This is where Utility Types in TypeScript come to the rescue.",
-                IMAGE: UtilityTypesImage,
-            },
+  PROJECTS: {
+    "Shelves – Book Tracking App": {
+      DESCRIPTION: [
+        "A full-stack MERN book tracking app where users can search any title via the Google Books API, save books to custom shelves, and track their reading progress — all with a responsive, mobile-first UI.",
+        "Shelf data is persisted in MongoDB, with protected routes and JWT-based authentication ensuring each user's library remains private and secure.",
+        "Built with a clean component architecture in React and styled with Tailwind CSS, with bcrypt handling password hashing and Express.js powering the REST API.",
+      ],
+      TECH_STACK: ["React.js", "React Router", "Node.js", "MongoDB", "Express.js", "Tailwind", "bcrypt", "JWT"],
     },
+    "Munch – Recipe Web App": {
+      DESCRIPTION: [
+        "A full-stack recipe discovery app built with the MERN stack, letting users search by ingredient or name, browse by category, and generate a random recipe when they can't decide what to cook.",
+        "Features a user authentication system with MongoDB-backed session storage, allowing logged-in users to save and revisit their favourite recipes across sessions.",
+        "Deployed on Vercel with a mobile-first Tailwind CSS layout and React Router handling smooth multi-page navigation throughout the app.",
+      ],
+      TECH_STACK: ["React.js", "React Router", "Node.js", "MongoDB", "Express.js", "Tailwind", "SCSS"],
+    },
+    "Hybrid Book Recommendation System": {
+      DESCRIPTION: [
+        "A Python recommendation engine that blends content-based filtering (TF-IDF on descriptions) with unsupervised KMeans clustering, using category overlap scoring to surface more relevant results.",
+        "Wrapped in a Gradio interface with live search, adjustable top-N output, and automatic book cover fetching — making the model accessible without any command-line setup.",
+        "Evaluated recommendation quality using Jaccard similarity between suggested and actual book categories, demonstrating measurable improvement over a single-method baseline.",
+      ],
+      TECH_STACK: ["Python", "Scikit-learn", "Pandas", "NumPy", "Gradio", "TF-IDF", "KMeans"],
+    },
+    "Plntd. Clone": {
+      DESCRIPTION: [
+        "A multi-page, fully responsive front-end clone of the Plntd. plant e-commerce brand, built from scratch with HTML, SCSS, and Bootstrap — manually tested across mobile, tablet, and desktop breakpoints.",
+        "Includes rich interactive components: an Owl Carousel product slider, parallax hero sections, collapsible navigation, and smooth accordion FAQs, all wired with vanilla JavaScript.",
+        "Features layered CSS animations including clip-path reveals, fade-ins, scroll-triggered effects, and hover transitions — with close attention to motion design and visual polish.",
+      ],
+      TECH_STACK: ["HTML", "SCSS", "Bootstrap", "JavaScript", "Owl Carousel"],
+    },
+    "Vellum – Digital Journalling Platform": {
+      NOTE: "Ongoing",
+      DESCRIPTION: [
+        "A minimal digital journalling platform designed around distraction-free writing — clean layout, no clutter, just a space to think and reflect.",
+        "Built with React on the frontend and Supabase on the backend, with row-level security ensuring each user's entries are fully private.",
+        "Currently implementing a rich text editor, tagging system, and mood tracking — with a focus on thoughtful UX over feature bloat.",
+      ],
+      TECH_STACK: ["React", "Supabase"],
+    },
+    "RGB Color Guessing Game": {
+      DESCRIPTION: [
+        "A browser-based colour guessing game that challenges players to match a colour swatch to its RGB value — testing colour perception and pattern recognition in a fun, replayable format.",
+        "Built with vanilla HTML, CSS, and JavaScript, with dynamic difficulty levels that adjust the number of colour options and the visual similarity between distractors.",
+        "Tracks score and streaks across rounds, with randomised RGB generation and instant visual feedback on correct and incorrect guesses.",
+      ],
+      TECH_STACK: ["HTML", "CSS", "JavaScript"],
+    },
+  },
 
-    SKILLS: {
-        Languages: [
-            "JavaScript",
-            "TypeScript",
-            "HTML",
-            "CSS",
-            "Node.js",
-            "Python",
-        ],
-        Frameworks: [
-            "React",
-            "Next.js",
-            "Django",
-            "Vue.js",
-            "Astro",
-            "Express.js",
-            "AdonisJS",
-            "React Native",
-            "Expo",
-            "Electron",
-            "PWA",
-        ],
-        Libraries: [
-            "React Query",
-            "Tailwind CSS",
-            "ShadCN UI",
-            "Ant Design",
-            "Styled Components",
-            "Material UI",
-        ],
-        "Database & Backend": [
-            "PostgreSQL",
-            "MongoDB",
-            "Redis",
-            "Contentful",
-            "Firebase",
-            "GraphQL",
-            "JWT",
-            "Auth.js",
-            "Clerk",
-        ],
-        "Cloud & Deployment": [
-            "Google Cloud Platform (GCP)",
-            "Amazon Web Services (AWS)",
-            "Vercel",
-        ],
-        "Tools & Platforms": [
-            "Git",
-            "GitHub",
-            "Postman",
-            "Docker",
-            "Visual Studio Code",
-            "Prettier",
-            "Sentry",
-        ],
+  OTHER_PROJECTS: {
+    "Vending Machine Utility App": {
+      DESCRIPTION: [
+        "Created an interactive vending machine app using Python and OOP principles, simulating real-world purchase and payment processes.",
+        "Implemented nested dictionaries for product categories, ASCII art interface, and modular functions for transactions, stock tracking, and receipt generation.",
+      ],
+      TECH_STACK: ["Python", "OOP"],
     },
+    "Snact. – Restaurant Finder App": {
+      DESCRIPTION: ["Designed a Figma prototype for a restaurant finder mobile app."],
+      TECH_STACK: ["Figma"],
+    },
+    "Pet Matching App": {
+      DESCRIPTION: ["Built a native Android pet matching application."],
+      TECH_STACK: ["Android Studio", "Java", "Kotlin"],
+    },
+    "Recipe Note-Taking App": {
+      DESCRIPTION: ["Built a native Android app for saving and organising personal recipes."],
+      TECH_STACK: ["Android Studio", "Java", "Kotlin"],
+    },
+    "Life Expectancy Prediction": {
+      DESCRIPTION: ["Explored regression techniques to predict life expectancy using public health datasets on Kaggle."],
+      TECH_STACK: ["Python", "Kaggle", "Scikit-learn", "Pandas"],
+    },
+    "Breast Cancer Classification": {
+      DESCRIPTION: ["Built a classification model to predict breast cancer diagnosis using supervised learning on Kaggle."],
+      TECH_STACK: ["Python", "Kaggle", "Scikit-learn"],
+    },
+    "Sproutman": {
+      DESCRIPTION: ["Developed a small game in Unity."],
+      TECH_STACK: ["Unity"],
+    },
+    "Back to Camp & Red and Snow": {
+      DESCRIPTION: [
+        "Created two visual novels — Back to Camp (Bitsy) and Red & Snow (Twine) — as narrative game projects.",
+      ],
+      TECH_STACK: ["Bitsy", "Twine"],
+    },
+  },
+
+  SKILLS: {
+    "Languages": ["HTML", "CSS", "JavaScript", "Python", "Kotlin", "C++"],
+    "Frameworks & Libraries": ["React", "Next.js (learning)", "Node.js", "Express.js", "Tailwind CSS", "Bootstrap", "SCSS", "NumPy", "Pandas", "Scikit-learn"],
+    "Databases & Auth": ["MongoDB", "Supabase", "JWT", "bcrypt"],
+    "Tools & Platforms": ["Git", "GitHub", "Figma", "Canva", "Postman", "Android Studio", "Unity", "Bitsy", "Twine", "CapCut", "Arduino (learning)", "TypeScript (learning)"],
+    "Certifications": [
+      "DataCamp – data science & Python certifications",
+      "CISCO – Introduction to Cybersecurity",
+      "LinkedIn Learning – frontend & design courses",
+    ],
+  },
+
+  EDUCATION: {
+    "Bath Spa University": {
+      DEGREE: "BSc (Hons) Creative Computing",
+      LOCATION: "Bath, UK",
+      DURATION: "Expected 2025",
+      GPA: "",
+      HIGHLIGHT: "Academic Excellence Award — multiple semesters",
+    },
+  },
 };

@@ -1,89 +1,121 @@
-import "@/app/globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
-import { Outfit } from "next/font/google";
 import { ThemeProvider } from "next-themes";
+import { Outfit } from "next/font/google";
+import "./globals.css";
+import SuppressHydrationWarnings from "@/components/suppress-hydration-warnings";
 
 const outfit = Outfit({
-    subsets: ["latin"],
-    display: "swap",
-    variable: "--font-outfit",
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-outfit",
 });
 
+const metaDescription =
+  "Creative Computing student and web developer building full-stack projects, Figma prototypes, and everything in between.";
+
+const metaKeywords = [
+  "skz",
+  "Web Developer",
+  "LLM Fine-tuning",
+  "RAG",
+  "PEFT QLoRA",
+  "High-Performance AI",
+  "Systems Engineer",
+  "Autonomous Agents",
+  "Machine Learning",
+  "Deep Learning",
+];
+
 export const metadata: Metadata = {
-    title: "Utkarsh Singhal | Software Developer",
-    description:
-        "Software developer specializing in Next.js, TypeScript and Node.js.",
-    openGraph: {
-        title: "Utkarsh Singhal | Software Developer",
-        description:
-            "Software developer specializing in Next.js, TypeScript, and Node.js. Experienced in building scalable, high-performance applications.",
-        url: "https://utkarsh-singhal.is-a.dev/",
-        type: "website",
-        images: [
-            {
-                url: "https://utkarsh-singhal.is-a.dev/opengraph-image.png",
-                width: 1200,
-                height: 630,
-                alt: "Utkarsh Singhal | Software Developer",
-            },
-        ],
-    },
-    twitter: {
-        card: "summary_large_image",
-        creator: "@Utkarsh_2604",
-    },
-    authors: [
-        { name: "Utkarsh Singhal", url: "https://utkarsh-singhal.is-a.dev/" },
+  title: "skz | Creative Computing",
+  description: metaDescription,
+  icons: {
+    icon: "/favicon.ico",
+  },
+  openGraph: {
+    title: "skz | Creative Computing",
+    description: metaDescription,
+    url: "https://skz.dev/",
+    type: "website",
+    images: [
+      {
+        url: "https://skz.dev/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: "skz | Creative Computing",
+      },
     ],
-    keywords: [
-        "Utkarsh Singhal",
-        "Software Developer",
-        "Full-Stack Developer",
-        "React",
-        "Next.js",
-        "TypeScript",
-        "Node.js",
-        "AWS",
-        "GCP",
-        "MongoDB",
-        "Firebase",
-        "Tailwind CSS",
-        "Web Development",
-    ],
-    creator: "Utkarsh Singhal",
-    publisher: "Utkarsh Singhal",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "skz | Creative Computing",
+    description: metaDescription,
+  },
+  authors: [
+    { name: "skz", url: "https://skz.dev/" },
+  ],
+  keywords: metaKeywords,
+  creator: "skz",
+  publisher: "skz",
 };
 
 export default function RootLayout({
-    children,
+  children,
 }: Readonly<{
-    children: React.ReactNode;
+  children: React.ReactNode;
 }>) {
-    return (
-        <html
-            lang="en"
-            className={`${outfit.variable}`}
-            suppressHydrationWarning
-        >
-            <body
-                className={`${outfit.className} w-screen min-h-screen m-0 p-0 overflow-x-hidden dark:bg-[#0b0a09]`}
-            >
-                <ThemeProvider
-                    attribute="class"
-                    defaultTheme="system"
-                    enableSystem
-                    disableTransitionOnChange
-                >
-                    <div className="bg-white dark:bg-black mx-auto pt-6 sm:pt-12 w-full md:w-3/4 lg:w-3/5 text-foreground">
-                        {children}
-                    </div>
-                </ThemeProvider>
+  const personSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Syeda Khadeeja",
+    url: "https://skz.dev/",
+    jobTitle: "Creative Computing Student · Web Developer",
+    sameAs: [
+      "https://github.com/pragnyanramtha",
+      "https://www.linkedin.com/in/pragnyanramtha",
+    ],
+    description: metaDescription,
+  };
 
-                <Analytics />
-                <SpeedInsights />
-            </body>
-        </html>
-    );
+  return (
+    <html lang="en" className={`${outfit.variable}`} suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <meta name="description" content={metaDescription} />
+        <meta name="keywords" content={metaKeywords.join(", ")} />
+        <link rel="canonical" href="https://skz.dev/" />
+        <meta name="author" content="Syeda Khadeeja" />
+        <meta name="darkreader-lock" content="darkreader-inline-stroke darkreader-inline-fill" />
+      </head>
+      <body
+        className={`${outfit.className} w-screen min-h-screen m-0 p-0 overflow-x-hidden`}
+        suppressHydrationWarning
+      >
+        <SuppressHydrationWarnings />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
+
+        {process.env.NEXT_PUBLIC_VERCEL_ENV && (
+          <>
+            <Analytics />
+            <SpeedInsights />
+          </>
+        )}
+        <script
+          type="application/ld+json"
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+        />
+      </body>
+    </html>
+  );
 }
