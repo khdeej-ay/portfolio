@@ -10,7 +10,7 @@ export const DATA = {
   HEADER: {
     NAME: "Syeda Khadeeja",
     PRONOUN: "she/her",
-    HEADLINE: "Creative Computing Student · Web Developer",
+    HEADLINE: "Full-Stack Developer",
     RESUME: "/resume.pdf",
     EMAIL: "mailto:s.khdeej@gmail.com",
     GITHUB: "https://github.com/khdeej-ay",
@@ -24,16 +24,16 @@ export const DATA = {
 
   EXPERIENCE: {
     "Real Estate Client": {
-      WEBSITE: "#",
+      WEBSITE: "",
       POSITION: "Frontend Developer",
       LOCATION: "Freelance",
       DURATION: "Jan 2025 – Jun 2025",
       DESCRIPTION: [
         "Led frontend development for a full-stack responsive real estate website, building interactive pages with React.js and React Router.",
-        "Implemented dynamic property listings, responsive image galleries, and contact forms with a strong focus on layout consistency across mobile, tablet, and desktop.",
-        "Manually tested and iterated on responsive behaviour across all major device sizes to ensure a polished user experience.",
+        "Implemented dynamic property listings, filterable image galleries, and contact form, while maintaining the layout consistency across all breakpoints.",
+        "Conducted thorough cross-device testing on mobile, tablet, and desktop throughout the build cycle, catching and resolving layout inconsistencies before delivery.",
       ],
-      TECH_STACK: ["React.js", "React Router", "CSS", "Responsive Design"],
+      TECH_STACK: ["React.js", "React Router", "CSS", "Responsive Design", "Node.js", "MongoDB", "Express.js", "Git & GitHub", "Vercel"],
     },
     "Hacktoberfest 2024": {
       WEBSITE: "https://hacktoberfest.com",
@@ -41,29 +41,31 @@ export const DATA = {
       LOCATION: "Remote",
       DURATION: "Oct 2024",
       DESCRIPTION: [
-        "Contributed to 4 open-source GitHub repositories, resolving frontend and API integration bugs, enhancing UI components, and updating technical documentation.",
+        "Completed 4 accepted pull requests across open-source repositories, tackling frontend bugs, improving UI components, fixing API integration issues, and updating outdated technical documentation.",
+        "Navigated unfamiliar codebases independently, quickly understanding project conventions and contributing meaningful fixes within tight timelines.",
+        "Strengthened collaborative workflow skills — writing clear commit messages, responding to maintainer feedback, and iterating on PRs to meet contribution standards.",
       ],
-      TECH_STACK: ["Git", "GitHub", "JavaScript", "Documentation"],
+      TECH_STACK: ["Git", "GitHub", "React.js", "JavaScript", "Documentation"],
     },
     "ISIP": {
-      WEBSITE: "#",
+      WEBSITE: "https://www.isip.foundation/",
       POSITION: "Media & Design Taskforce Member",
       LOCATION: "On-site",
       DURATION: "May 2024 – Dec 2024",
       DESCRIPTION: [
         "Collaborated with the project manager to redesign the organisation chart on FigJam, improving clarity and structure for over 50 team members.",
-        "Sourced 30+ high-quality stock images for the organisation's website and worked closely with the web development team to enhance visual appeal and functionality.",
+        "Curated and sourced 30+ high-quality stock images for the organisation's website and worked closely with the web development team to enhance visual appeal and functionality.",
       ],
-      TECH_STACK: ["FigJam", "Figma", "Canva"],
+      TECH_STACK: ["FigJam", "Figma", "Canva", "Unsplash", "Pexels"],
     },
     "A Level Tutor": {
-      WEBSITE: "#",
+      WEBSITE: "",
       POSITION: "Private Tutor",
       LOCATION: "On-site",
       DURATION: "Jun 2022 – May 2024",
       DESCRIPTION: [
         "Provided personalised tutoring in Mathematics, Physics, and Chemistry, helping students achieve at least a one-grade improvement.",
-        "Guided students through past paper practice, boosting critical thinking and problem-solving skills — resulting in a 15% average increase in test scores within 3 months.",
+        "Designed structured past paper sessions focused on exam technique and critical thinking, resulting in a 15% score increase within 3 months.",
       ],
       TECH_STACK: ["Mathematics", "Physics", "Chemistry"],
     },
@@ -72,7 +74,7 @@ export const DATA = {
   PROJECTS: {
     "Shelves – Book Tracking App": {
       DESCRIPTION: [
-        "A full-stack MERN book tracking app where users can search any title via the Google Books API, save books to custom shelves, and track their reading progress — all with a responsive, mobile-first UI.",
+        "A full-stack MERN book tracking app where users can search any title via the Google Books API, save books to custom shelves, and track their reading progress through a responsive, mobile-first UI.",
         "Shelf data is persisted in MongoDB, with protected routes and JWT-based authentication ensuring each user's library remains private and secure.",
         "Built with a clean component architecture in React and styled with Tailwind CSS, with bcrypt handling password hashing and Express.js powering the REST API.",
       ],
