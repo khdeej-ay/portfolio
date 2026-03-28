@@ -63,7 +63,7 @@ export function Contact({ data }: { data: Record<string, string> }) {
           </Link>
         </div>
 
-        <div className="pt-4 cursor-target">
+        <div className="py-5 md:py-10 cursor-target">
           <p className="text-gray-400 text-sm">
             Currently available for freelance work and internship opportunities
           </p>
