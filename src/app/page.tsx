@@ -33,9 +33,9 @@ export default function Page() {
       <main className="px-4 min-h-lvh">
         <Header data={DATA.HEADER} />
         <AboutMe data={DATA.ABOUT_ME} />
-        <Experience data={DATA.EXPERIENCE} />
-        <Projects data={DATA.PROJECTS} />
         <Skills data={DATA.SKILLS} />
+        {/* <Experience data={DATA.EXPERIENCE} /> */}
+        <Projects data={DATA.PROJECTS} />
         <Contact data={DATA.HEADER} />
         <Footer />
       </main>
