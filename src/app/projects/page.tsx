@@ -6,23 +6,142 @@ import GridPattern from "@/components/ui/grid-pattern";
 import TargetCursor from "@/components/ui/target-cursor";
 import useMobileDetection from "@/hooks/use-mobile";
 import { ArrowUpRight } from "lucide-react";
-import Image, { StaticImageData } from "next/image";
-import React from "react";
+import Image from "next/image";
 
-interface IProjectData {
-  IMAGE?: StaticImageData;
+// ── Types ──────────────────────────────────────────────────────────────────────
+
+interface IFeaturedProject {
+  IMAGE?: string;
   LIVE_PREVIEW?: string;
   GITHUB?: string;
   LINK?: string;
-  DESCRIPTION: string[];
+  SHORT_DESCRIPTION?: string;
+  DESCRIPTION: string;
   NOTE?: string;
-  TECH_STACK: string[];
+  FEATURES?: string[];
+  TAGS: string[];
 }
 
+interface IOtherProject {
+  SHORT_DESCRIPTION: string;
+  TAGS: string[];
+}
+
+// ── Featured Project Card ──────────────────────────────────────────────────────
+
+function ProjectCard({ name, data }: { name: string; data: IFeaturedProject }) {
+  return (
+    <li className="group flex flex-col md:flex-row border border-border hover:border-muted-foreground/40 bg-muted/30 hover:bg-muted/50 rounded-xl overflow-hidden transition-all duration-300">
+
+      {/* Image */}
+      <div className="relative md:w-[240px] md:min-w-[240px] w-full h-48 md:h-auto bg-muted shrink-0 overflow-hidden">
+        {data.IMAGE ? (
+          <Image
+            src={data.IMAGE}
+            alt={name}
+            fill
+            className="object-cover object-top group-hover:scale-[1.03] transition-transform duration-500"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center text-muted-foreground/20 text-xs select-none">
+            no preview
+          </div>
+        )}
+      </div>
+
+      {/* Content */}
+      <div className="flex flex-col justify-between gap-3 p-5 flex-1 min-w-0">
+        <div className="flex flex-col gap-2">
+
+          {/* Title row */}
+          <div className="flex flex-wrap items-center gap-2">
+            <h3 className="text-primary/90 text-lg font-medium">{name}</h3>
+
+            {data.NOTE && (
+              <span className="text-[10px] font-medium bg-primary/10 text-primary/60 border border-primary/20 px-2 py-0.5 rounded-full">
+                {data.NOTE}
+              </span>
+            )}
+
+            {/* Links */}
+            <div className="flex items-center gap-3 text-sm text-muted-foreground ml-auto">
+              {data.LIVE_PREVIEW && (
+                <a
+                  href={data.LIVE_PREVIEW}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1 hover:text-primary transition-colors"
+                >
+                  live preview <ArrowUpRight size={15} />
+                </a>
+              )}
+              {data.GITHUB && (
+                <a
+                  href={data.GITHUB}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1 hover:text-primary transition-colors"
+                >
+                  github <ArrowUpRight size={15} />
+                </a>
+              )}
+              {data.LINK && !data.LIVE_PREVIEW && !data.GITHUB && (
+                <a
+                  href={data.LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1 hover:text-primary transition-colors"
+                >
+                  view project <ArrowUpRight size={15} />
+                </a>
+              )}
+            </div>
+          </div>
+
+          {/* Description */}
+          <p className="text-muted-foreground text-sm leading-relaxed">
+            {data.DESCRIPTION}
+          </p>
+        </div>
+
+        {/* Tags */}
+        <ul className="flex flex-wrap gap-1.5">
+          {data.TAGS.map((tag) => (
+            <li key={tag} className="bg-background border border-border px-2 py-0.5 rounded text-xs text-muted-foreground">
+              {tag}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </li>
+  );
+}
+
+// ── Small Grid Card ────────────────────────────────────────────────────────────
+
+function SmallCard({ name, data }: { name: string; data: IOtherProject }) {
+  return (
+    <li className="flex flex-col gap-2 p-4 border border-border hover:border-muted-foreground/40 bg-muted/20 hover:bg-muted/40 rounded-xl transition-all duration-300 h-full">
+      <p className="text-primary/90 text-sm font-medium">{name}</p>
+      <p className="text-muted-foreground text-xs leading-relaxed flex-1">{data.SHORT_DESCRIPTION}</p>
+      <ul className="flex flex-wrap gap-1 mt-1">
+        {data.TAGS.map((tag) => (
+          <li key={tag} className="bg-background border border-border px-2 py-0.5 rounded text-[10px] text-muted-foreground">
+            {tag}
+          </li>
+        ))}
+      </ul>
+    </li>
+  );
+}
+
+// ── Page ───────────────────────────────────────────────────────────────────────
+
 export default function Page() {
-  const projectsData: Record<string, IProjectData> = DATA.PROJECTS;
-  const otherProjectsData: Record<string, IProjectData> = DATA.OTHER_PROJECTS || {};
   const checkMobile = useMobileDetection();
+
+  const featuredProjects = DATA.PROJECTS as Record<string, IFeaturedProject>;
+  const otherProjects = DATA.OTHER_PROJECTS as Record<string, Record<string, IOtherProject>>;
 
   return (
     <div className="mx-auto px-4 pt-6 sm:pt-12 w-full lg:w-2/3 text-foreground">
@@ -36,205 +155,37 @@ export default function Page() {
         className="[mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)]"
       />
 
+      {/* Header */}
       <section className="py-16">
         <h1 className="font-medium text-primary/90 text-base">my projects.</h1>
-        <div className="max-w-4xl text-muted-foreground text-sm text-justify leading-relaxed">
+        <div className="max-w-4xl text-muted-foreground text-sm leading-relaxed">
           <p className="mt-2 mb-4">
             A collection of things I've built over the past 3 years — from full-stack web apps and machine learning experiments to Figma prototypes, Android apps, and games. I love jumping between disciplines and finding the creative thread that ties them together.
           </p>
         </div>
       </section>
 
-      <div className="space-y-12 mb-12">
-        {Object.entries(projectsData).map(([key, value], index) => {
-          const isEven = index % 2 === 0;
+      {/* Featured Projects */}
+      <ul className="flex flex-col gap-4 mb-16">
+        {Object.entries(featuredProjects).map(([key, value]) => (
+          <ProjectCard key={key} name={key} data={value} />
+        ))}
+      </ul>
 
-          return (
-            <React.Fragment key={key}>
-              {value.LINK ? (
-                <a
-                  href={value.LINK}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="items-start gap-12 grid lg:grid-cols-2 cursor-target block"
-                >
-                  <div className={`${isEven ? "lg:order-1" : "lg:order-2"}`}>
-                    <div className="relative rounded-lg overflow-hidden">
-                      <Image
-                        src={value.IMAGE || "/placeholder.svg"}
-                        alt={key}
-                        width={600}
-                        height={400}
-                        className="w-full h-80 object-cover"
-                      />
-                    </div>
-                  </div>
-
-                  <div
-                    className={`space-y-6 border-muted-foreground hover:border-primary border-l size-full transition-all duration-300 pl-4 ${isEven ? "lg:order-2" : "lg:order-1"}`}
-                  >
-                    <div>
-                      <h2 className="mb-1 font-medium text-2xl">{key}</h2>
-
-                      <p className="flex items-center gap-1 text-sm">
-                        {value.LIVE_PREVIEW && (
-                          <a
-                            className="flex items-center gap-1"
-                            href={value.LIVE_PREVIEW}
-                            onClick={(e) => e.stopPropagation()}
-                          >
-                            live preview <ArrowUpRight size={18} />
-                          </a>
-                        )}
-                        {value.GITHUB && (
-                          <a
-                            className="flex items-center gap-1"
-                            href={value.GITHUB}
-                            onClick={(e) => e.stopPropagation()}
-                          >
-                            github <ArrowUpRight size={18} />
-                          </a>
-                        )}
-                      </p>
-                    </div>
-                    <ul className="space-y-1 mt-1 pl-3 text-muted-foreground text-sm text-justify list-disc">
-                      {value.DESCRIPTION.map((desc, index) => (
-                        <li key={index}>
-                          <span>{desc}</span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    <ul className="flex flex-wrap items-center gap-2 mt-2 pl-3">
-                      {value.TECH_STACK.map((tech, index) => (
-                        <li
-                          key={index}
-                          className="bg-muted px-2 py-1 rounded text-xs"
-                        >
-                          {tech}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </a>
-              ) : (
-                <div className="items-start gap-12 grid lg:grid-cols-2 cursor-target">
-                  <div className={`${isEven ? "lg:order-1" : "lg:order-2"}`}>
-                    <div className="relative rounded-lg overflow-hidden">
-                      <Image
-                        src={value.IMAGE || "/placeholder.svg"}
-                        alt={key}
-                        width={600}
-                        height={400}
-                        className="w-full h-80 object-cover"
-                      />
-                    </div>
-                  </div>
-
-                  <div
-                    className={`space-y-6 border-muted-foreground hover:border-primary border-l size-full transition-all duration-300 pl-4 ${isEven ? "lg:order-2" : "lg:order-1"}`}
-                  >
-                    <div>
-                      <h2 className="mb-1 font-medium text-2xl">{key}</h2>
-
-                      <p className="flex items-center gap-1 text-sm">
-                        {value.LIVE_PREVIEW && (
-                          <a
-                            className="flex items-center gap-1"
-                            href={value.LIVE_PREVIEW}
-                          >
-                            live preview <ArrowUpRight size={18} />
-                          </a>
-                        )}
-                        {value.GITHUB && (
-                          <a
-                            className="flex items-center gap-1"
-                            href={value.GITHUB}
-                          >
-                            github <ArrowUpRight size={18} />
-                          </a>
-                        )}
-                      </p>
-                    </div>
-                    <ul className="space-y-1 mt-1 pl-3 text-muted-foreground text-sm text-justify list-disc">
-                      {value.DESCRIPTION.map((desc, index) => (
-                        <li key={index}>
-                          <span>{desc}</span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    <ul className="flex flex-wrap items-center gap-2 mt-2 pl-3">
-                      {value.TECH_STACK.map((tech, index) => (
-                        <li
-                          key={index}
-                          className="bg-muted px-2 py-1 rounded text-xs"
-                        >
-                          {tech}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              )}
-
-              {index < Object.entries(projectsData).length - 1 && (
-                <div className="border-muted-foreground/20 border-t" />
-              )}
-            </React.Fragment>
-          );
-        })}
-      </div>
-
-      {Object.keys(otherProjectsData).length > 0 && (
-        <section className="mb-12">
+      {/* Other Projects */}
+      {otherProjects && Object.keys(otherProjects).length > 0 && (
+        <section className="mb-16">
           <h2 className="font-medium text-primary/90 text-base mb-8">other projects.</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {Object.entries(otherProjectsData).map(([key, value]) => (
-              <div
-                key={key}
-                className="cursor-target border-muted-foreground hover:border-primary border rounded-lg overflow-hidden transition-all duration-300"
-              >
-                <div className="p-4 space-y-3">
-                  <div>
-                    <h3 className="font-medium text-lg mb-1">{key}</h3>
-                    <p className="flex items-center gap-1 text-xs">
-                      {value.LIVE_PREVIEW && (
-                        <a
-                          className="flex items-center gap-1"
-                          href={value.LIVE_PREVIEW}
-                        >
-                          live preview <ArrowUpRight size={14} />
-                        </a>
-                      )}
-                      {value.GITHUB && (
-                        <a
-                          className="flex items-center gap-1"
-                          href={value.GITHUB}
-                        >
-                          github <ArrowUpRight size={14} />
-                        </a>
-                      )}
-                    </p>
-                  </div>
-                  <ul className="space-y-1 text-muted-foreground text-xs text-justify list-disc pl-4">
-                    {value.DESCRIPTION.slice(0, 2).map((desc, index) => (
-                      <li key={index}>
-                        <span>{desc}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <ul className="flex flex-wrap items-center gap-2 pt-2">
-                    {value.TECH_STACK.slice(0, 4).map((tech, index) => (
-                      <li
-                        key={index}
-                        className="bg-muted px-2 py-1 rounded text-xs"
-                      >
-                        {tech}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+
+          <div className="flex flex-col gap-10">
+            {Object.entries(otherProjects).map(([category, projects]) => (
+              <div key={category}>
+                <p className="text-muted-foreground/50 text-xs uppercase tracking-widest mb-3">{category}</p>
+                <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                  {Object.entries(projects).map(([name, proj]) => (
+                    <SmallCard key={name} name={name} data={proj} />
+                  ))}
+                </ul>
               </div>
             ))}
           </div>
@@ -242,7 +193,6 @@ export default function Page() {
       )}
 
       <Contact data={DATA.HEADER} />
-
       <Footer />
 
       {!checkMobile && <TargetCursor spinDuration={2} hideDefaultCursor />}
