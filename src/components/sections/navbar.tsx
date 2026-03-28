@@ -32,14 +32,14 @@ export function Navbar() {
         change={() => router.push("/")}
         ariaLabel="Navigate to home"
       >
-        <Link href={"/"} className="font-bold text-xl tracking-tighter">
+        <Link href={"/"} className="font-bold text-xl tracking-tighter" suppressHydrationWarning>
           skz.
         </Link>
       </MovingElement>
 
       <nav className="flex items-center gap-2">
         <ul className="flex items-center gap-2 sm:gap-0">
-          {["experience", "projects", "contact"].map((link, index) => (
+          {["about", "projects", "contact"].map((link, index) => (
             <li key={index}>
               <AnimatedText href={`/#${link}`}>{link}</AnimatedText>
             </li>
