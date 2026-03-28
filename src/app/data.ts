@@ -1,9 +1,18 @@
 export interface IProjectData {
+  IMAGE?: string;
   LIVE_PREVIEW?: string;
   GITHUB?: string;
-  DESCRIPTION: string[];
+  LINK?: string;
+  SHORT_DESCRIPTION?: string;
+  DESCRIPTION: string;
   NOTE?: string;
-  TECH_STACK: string[];
+  FEATURES?: string[];
+  TAGS: string[];
+}
+
+export interface IOtherProjectData {
+  SHORT_DESCRIPTION: string;
+  TAGS: string[];
 }
 
 export const DATA = {
@@ -72,94 +81,165 @@ export const DATA = {
   },
 
   PROJECTS: {
-    "Shelves – Book Tracking App": {
-      DESCRIPTION: [
-        "A full-stack MERN book tracking app where users can search any title via the Google Books API, save books to custom shelves, and track their reading progress through a responsive, mobile-first UI.",
-        "Shelf data is persisted in MongoDB, with protected routes and JWT-based authentication ensuring each user's library remains private and secure.",
-        "Built with a clean component architecture in React and styled with Tailwind CSS, with bcrypt handling password hashing and Express.js powering the REST API.",
-      ],
-      TECH_STACK: ["React.js", "React Router", "Node.js", "MongoDB", "Express.js", "Tailwind", "bcrypt", "JWT"],
-    },
-    "Munch – Recipe Web App": {
-      DESCRIPTION: [
-        "A full-stack recipe discovery app built with the MERN stack, letting users search by ingredient or name, browse by category, and generate a random recipe when they can't decide what to cook.",
-        "Features a user authentication system with MongoDB-backed session storage, allowing logged-in users to save and revisit their favourite recipes across sessions.",
-        "Deployed on Vercel with a mobile-first Tailwind CSS layout and React Router handling smooth multi-page navigation throughout the app.",
-      ],
-      TECH_STACK: ["React.js", "React Router", "Node.js", "MongoDB", "Express.js", "Tailwind", "SCSS"],
-    },
-    "Hybrid Book Recommendation System": {
-      DESCRIPTION: [
-        "A Python recommendation engine that blends content-based filtering (TF-IDF on descriptions) with unsupervised KMeans clustering, using category overlap scoring to surface more relevant results.",
-        "Wrapped in a Gradio interface with live search, adjustable top-N output, and automatic book cover fetching — making the model accessible without any command-line setup.",
-        "Evaluated recommendation quality using Jaccard similarity between suggested and actual book categories, demonstrating measurable improvement over a single-method baseline.",
-      ],
-      TECH_STACK: ["Python", "Scikit-learn", "Pandas", "NumPy", "Gradio", "TF-IDF", "KMeans"],
-    },
-    "Plntd. Clone": {
-      DESCRIPTION: [
-        "A multi-page, fully responsive front-end clone of the Plntd. plant e-commerce brand, built from scratch with HTML, SCSS, and Bootstrap — manually tested across mobile, tablet, and desktop breakpoints.",
-        "Includes rich interactive components: an Owl Carousel product slider, parallax hero sections, collapsible navigation, and smooth accordion FAQs, all wired with vanilla JavaScript.",
-        "Features layered CSS animations including clip-path reveals, fade-ins, scroll-triggered effects, and hover transitions — with close attention to motion design and visual polish.",
-      ],
-      TECH_STACK: ["HTML", "SCSS", "Bootstrap", "JavaScript", "Owl Carousel"],
-    },
-    "Vellum – Digital Journalling Platform": {
+    "Vellum": {
+      IMAGE: "/projects/vellum.png",
       NOTE: "Ongoing",
-      DESCRIPTION: [
-        "A minimal digital journalling platform designed around distraction-free writing — clean layout, no clutter, just a space to think and reflect.",
-        "Built with React on the frontend and Supabase on the backend, with row-level security ensuring each user's entries are fully private.",
-        "Currently implementing a rich text editor, tagging system, and mood tracking — with a focus on thoughtful UX over feature bloat.",
+      SHORT_DESCRIPTION: "A minimal digital journalling platform built for distraction-free writing and reflection.",
+      DESCRIPTION:
+        "Vellum is a clean, focused journalling platform designed around the idea that writing should feel effortless. Built with React and Supabase, it uses row-level security to keep every user's entries completely private. Currently being expanded with a rich text editor, tagging system, and mood tracking — with a deliberate focus on thoughtful UX over feature bloat.",
+      FEATURES: [
+        "Distraction-free writing environment",
+        "Private entries with row-level security",
+        "Rich text editor (in progress)",
+        "Tagging system and mood tracking (in progress)",
       ],
-      TECH_STACK: ["React", "Supabase"],
+      TAGS: ["React", "Supabase", "PostgreSQL"],
     },
-    "RGB Color Guessing Game": {
-      DESCRIPTION: [
-        "A browser-based colour guessing game that challenges players to match a colour swatch to its RGB value — testing colour perception and pattern recognition in a fun, replayable format.",
-        "Built with vanilla HTML, CSS, and JavaScript, with dynamic difficulty levels that adjust the number of colour options and the visual similarity between distractors.",
-        "Tracks score and streaks across rounds, with randomised RGB generation and instant visual feedback on correct and incorrect guesses.",
+    "Shelves": {
+      IMAGE: "/projects/shelves.png",
+      SHORT_DESCRIPTION: "A full-stack book tracking app where users can organise their reading life across custom shelves.",
+      DESCRIPTION:
+        "Shelves is a MERN stack app that lets users search any book title via the Google Books API, save them to custom shelves, and track their reading progress. Built with a clean React component architecture and styled with Tailwind CSS, it features JWT-based authentication and bcrypt password hashing to keep each user's library private and secure.",
+      FEATURES: [
+        "Google Books API search integration",
+        "Custom shelves and reading progress tracking",
+        "JWT authentication with protected routes",
+        "Responsive, mobile-first UI",
       ],
-      TECH_STACK: ["HTML", "CSS", "JavaScript"],
+      TAGS: ["React.js", "React Router", "Node.js", "Express.js", "MongoDB", "Tailwind", "JWT", "bcrypt"],
+    },
+    "Oasis": {
+      IMAGE: "/projects/oasis.png",
+      SHORT_DESCRIPTION: "A full-stack real estate website built for a freelance client, featuring property listings and a contact form.",
+      DESCRIPTION:
+        "Oasis is a responsive real estate website developed as a freelance project. Built with React and React Router, it features dynamic property listings, a filterable image gallery powered by Swiper.js, and a contact form backed by a Node.js/Express/MongoDB stack. Delivered with thorough cross-device testing across mobile, tablet, and desktop to ensure layout consistency throughout.",
+      FEATURES: [
+        "Dynamic property listings",
+        "Filterable image gallery with Swiper.js",
+        "Contact form with backend persistence",
+        "Fully responsive across all breakpoints",
+      ],
+      TAGS: ["React.js", "React Router", "CSS", "JavaScript", "Swiper.js", "Node.js", "Express.js", "MongoDB"],
+    },
+    "Munch": {
+      IMAGE: "/projects/munch.png",
+      SHORT_DESCRIPTION: "A full-stack recipe discovery app with search, categories, and a random recipe generator.",
+      DESCRIPTION:
+        "Munch is a MERN stack recipe app that lets users search by ingredient or dish name, browse by category, and get a random recipe when inspiration is lacking. It includes a user authentication system with MongoDB-backed session storage, so logged-in users can save and revisit their favourite recipes. Deployed on Vercel with a mobile-first Tailwind layout and smooth React Router navigation.",
+      FEATURES: [
+        "Search recipes by ingredient or name",
+        "Category browsing and random recipe generator",
+        "Save favourite recipes across sessions",
+        "User authentication with session storage",
+      ],
+      TAGS: ["React.js", "React Router", "Node.js", "Express.js", "MongoDB", "Tailwind", "SCSS"],
+    },
+    "Plntd.": {
+      IMAGE: "/projects/plntd.png",
+      SHORT_DESCRIPTION: "A fully responsive multi-page front-end clone of the Plntd. plant e-commerce brand.",
+      DESCRIPTION:
+        "A hand-built front-end clone of the Plntd. plant e-commerce brand, recreated from scratch using HTML, SCSS, and Bootstrap. It includes an Owl Carousel product slider, parallax hero sections, collapsible navigation, and accordion FAQs — all wired with vanilla JavaScript. Layered CSS animations cover clip-path reveals, fade-ins, scroll-triggered effects, and hover transitions, with close attention to motion design and visual polish.",
+      FEATURES: [
+        "Owl Carousel product slider",
+        "Parallax hero sections",
+        "Clip-path and scroll-triggered CSS animations",
+        "Manually tested across mobile, tablet, and desktop",
+      ],
+      TAGS: ["HTML", "SCSS", "Bootstrap", "JavaScript", "Owl Carousel"],
+    },
+    "RGB Game": {
+      IMAGE: "/projects/rgb.png",
+      SHORT_DESCRIPTION: "A browser-based colour guessing game that challenges players to match a swatch to its RGB value.",
+      DESCRIPTION:
+        "A fun, replayable colour guessing game where players identify a colour swatch from its RGB value. Built with vanilla HTML, CSS, and JavaScript, it features dynamic difficulty levels that adjust the number of options and the visual similarity between distractors. Score and streak tracking, randomised RGB generation, and instant visual feedback keep each round snappy and engaging.",
+      FEATURES: [
+        "Dynamic difficulty levels",
+        "Score and streak tracking",
+        "Randomised RGB generation",
+        "Instant visual feedback",
+      ],
+      TAGS: ["HTML", "CSS", "JavaScript"],
     },
   },
 
   OTHER_PROJECTS: {
-    "Vending Machine Utility App": {
-      DESCRIPTION: [
-        "Created an interactive vending machine app using Python and OOP principles, simulating real-world purchase and payment processes.",
-        "Implemented nested dictionaries for product categories, ASCII art interface, and modular functions for transactions, stock tracking, and receipt generation.",
-      ],
-      TECH_STACK: ["Python", "OOP"],
+    Applications: {
+      "Recipe Note-Taking App": {
+        SHORT_DESCRIPTION: "A native Android app for saving and organising personal recipes.",
+        TAGS: ["Android Studio", "Java", "Kotlin"],
+      },
+      "Pet Matching App": {
+        SHORT_DESCRIPTION: "A native Android app that matches users with pets based on their preferences and lifestyle.",
+        TAGS: ["Android Studio", "Java", "Kotlin"],
+      },
+      "Vending Machine App": {
+        SHORT_DESCRIPTION:
+          "An interactive terminal-based vending machine simulator built with Python, featuring ASCII art, colours, and OOP — simulating real purchase and payment flows with stock tracking and receipt generation.",
+        TAGS: ["Python", "OOP"],
+      },
+      "Trivio": {
+        SHORT_DESCRIPTION:
+          "A customisable trivia quiz app built with Tkinter and the Open Trivia DB API. Users pick their category, difficulty, question count, and type — then play through a themed GUI with True/False and MCQ support.",
+        TAGS: ["Python", "Tkinter", "OpenTriviaDB API", "OOP", "Figma"],
+      },
     },
-    "Snact. – Restaurant Finder App": {
-      DESCRIPTION: ["Designed a Figma prototype for a restaurant finder mobile app."],
-      TECH_STACK: ["Figma"],
+    "ML Projects": {
+      "Hybrid Book Recommendation System": {
+        SHORT_DESCRIPTION:
+          "A Python recommendation engine blending TF-IDF content filtering with KMeans clustering, wrapped in a Gradio interface with live search, adjustable output, and automatic book cover fetching.",
+        TAGS: ["Python", "Scikit-learn", "Pandas", "NumPy", "Gradio", "TF-IDF", "KMeans"],
+      },
+      "Life Expectancy Prediction": {
+        SHORT_DESCRIPTION: "A regression model exploring predictors of life expectancy using public health datasets on Kaggle.",
+        TAGS: ["Python", "Kaggle", "Scikit-learn", "Pandas"],
+      },
+      "Breast Cancer Classification": {
+        SHORT_DESCRIPTION: "A supervised classification model predicting breast cancer diagnosis from clinical features.",
+        TAGS: ["Python", "Kaggle", "Scikit-learn"],
+      },
+      "Disciplinary": {
+        SHORT_DESCRIPTION:
+          "A Dialogflow-powered productivity chatbot that tackles procrastination, burnout, and focus issues. Offers five services: solving productivity problems, building to-do lists, running focus timers, explaining study techniques like Pomodoro and the Eisenhower Matrix, and sharing motivational content.",
+        TAGS: ["Dialogflow", "Conversational AI", "NLP"],
+      },
     },
-    "Pet Matching App": {
-      DESCRIPTION: ["Built a native Android pet matching application."],
-      TECH_STACK: ["Android Studio", "Java", "Kotlin"],
+    "Mini Games": {
+      "Sproutman": {
+        SHORT_DESCRIPTION: "A small game developed in Unity.",
+        TAGS: ["Unity"],
+      },
+      "Red and Snow": {
+        SHORT_DESCRIPTION: "A narrative visual novel built in Twine.",
+        TAGS: ["Twine"],
+      },
+      "Snake Game": {
+        SHORT_DESCRIPTION: "A classic Snake game rebuilt in p5.js with a custom visual design.",
+        TAGS: ["p5.js", "JavaScript"],
+      },
+      "Audio Visualizer": {
+        SHORT_DESCRIPTION: "A p5.js audio visualizer with custom tweaks to the visual output and behaviour.",
+        TAGS: ["p5.js", "JavaScript"],
+      },
+      "Back to Camp": {
+        SHORT_DESCRIPTION: "A short narrative game built in Bitsy.",
+        TAGS: ["Bitsy"],
+      },
     },
-    "Recipe Note-Taking App": {
-      DESCRIPTION: ["Built a native Android app for saving and organising personal recipes."],
-      TECH_STACK: ["Android Studio", "Java", "Kotlin"],
-    },
-    "Life Expectancy Prediction": {
-      DESCRIPTION: ["Explored regression techniques to predict life expectancy using public health datasets on Kaggle."],
-      TECH_STACK: ["Python", "Kaggle", "Scikit-learn", "Pandas"],
-    },
-    "Breast Cancer Classification": {
-      DESCRIPTION: ["Built a classification model to predict breast cancer diagnosis using supervised learning on Kaggle."],
-      TECH_STACK: ["Python", "Kaggle", "Scikit-learn"],
-    },
-    "Sproutman": {
-      DESCRIPTION: ["Developed a small game in Unity."],
-      TECH_STACK: ["Unity"],
-    },
-    "Back to Camp & Red and Snow": {
-      DESCRIPTION: [
-        "Created two visual novels — Back to Camp (Bitsy) and Red & Snow (Twine) — as narrative game projects.",
-      ],
-      TECH_STACK: ["Bitsy", "Twine"],
+    "Design & Prototypes": {
+      "University Website Redesigns": {
+        SHORT_DESCRIPTION:
+          "Two university website redesigns — one produced in Canva, and one built as a fully interactive prototype in Figma.",
+        TAGS: ["Figma", "Canva", "UI Design", "Prototyping"],
+      },
+      "Snact.": {
+        SHORT_DESCRIPTION: "A Figma prototype for a restaurant finder mobile app.",
+        TAGS: ["Figma", "UI Design", "Prototyping"],
+      },
+      "First Class Trophy": {
+        SHORT_DESCRIPTION:
+          "A physical trophy prototype designed for a Creative Computing award. The icosahedron form was chosen to represent the intersection of code, design, and art — built from lightweight materials as part of an ideation and UX design module.",
+        TAGS: ["Physical Prototype", "Ideation", "UX Design"],
+      },
     },
   },
 
@@ -179,7 +259,7 @@ export const DATA = {
     "Bath Spa University": {
       DEGREE: "BSc (Hons) Creative Computing",
       LOCATION: "Bath, UK",
-      DURATION: "Expected 2025",
+      DURATION: "Expected 2026",
       GPA: "",
       HIGHLIGHT: "Academic Excellence Award — multiple semesters",
     },
