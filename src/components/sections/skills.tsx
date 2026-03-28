@@ -1,6 +1,6 @@
 export function Skills({ data }: { data: Record<string, string[]> }) {
   return (
-    <div id="skills" className="py-10">
+    <div id="skills" className="py-6">
       <h2 className="font-medium text-primary/90 text-base">
         technical skills.
       </h2>
