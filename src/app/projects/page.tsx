@@ -100,7 +100,7 @@ function ProjectCard({ name, data }: { name: string; data: IFeaturedProject }) {
 
           {/* Description */}
           <p className="text-muted-foreground text-sm leading-relaxed">
-            {data.DESCRIPTION}
+            {data.SHORT_DESCRIPTION}
           </p>
         </div>
 
@@ -144,7 +144,7 @@ export default function Page() {
   const otherProjects = DATA.OTHER_PROJECTS as Record<string, Record<string, IOtherProject>>;
 
   return (
-    <div className="mx-auto px-4 pt-6 sm:pt-12 w-full lg:w-2/3 text-foreground">
+    <div className="mx-auto px-4 pt-6 sm:pt-12 w-full lg:w-2/3 xl:w-1/2 text-foreground">
       <Navbar />
 
       <GridPattern
@@ -155,45 +155,47 @@ export default function Page() {
         className="[mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)]"
       />
 
-      {/* Header */}
-      <section className="py-16">
-        <h1 className="font-medium text-primary/90 text-base">my projects.</h1>
-        <div className="max-w-4xl text-muted-foreground text-sm leading-relaxed">
-          <p className="mt-2 mb-4">
-            A collection of things I've built over the past 3 years — from full-stack web apps and machine learning experiments to Figma prototypes, Android apps, and games. I love jumping between disciplines and finding the creative thread that ties them together.
-          </p>
-        </div>
-      </section>
-
-      {/* Featured Projects */}
-      <ul className="flex flex-col gap-4 mb-16">
-        {Object.entries(featuredProjects).map(([key, value]) => (
-          <ProjectCard key={key} name={key} data={value} />
-        ))}
-      </ul>
-
-      {/* Other Projects */}
-      {otherProjects && Object.keys(otherProjects).length > 0 && (
-        <section className="mb-16">
-          <h2 className="font-medium text-primary/90 text-base mb-8">other projects.</h2>
-
-          <div className="flex flex-col gap-10">
-            {Object.entries(otherProjects).map(([category, projects]) => (
-              <div key={category}>
-                <p className="text-muted-foreground/50 text-xs uppercase tracking-widest mb-3">{category}</p>
-                <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                  {Object.entries(projects).map(([name, proj]) => (
-                    <SmallCard key={name} name={name} data={proj} />
-                  ))}
-                </ul>
-              </div>
-            ))}
+      <main className="px-4 min-h-lvh">
+        {/* Header */}
+        <section className="py-10">
+          <h1 className="font-medium text-primary/90 text-base">my projects.</h1>
+          <div className="max-w-4xl text-muted-foreground text-sm leading-relaxed">
+            <p className="mt-2 mb-4">
+              A collection of things I've built over the past 3 years — from full-stack web apps and machine learning experiments to Figma prototypes, Android apps, and games. I love jumping between disciplines and finding the creative thread that ties them together.
+            </p>
           </div>
         </section>
-      )}
 
-      <Contact data={DATA.HEADER} />
-      <Footer />
+        {/* Featured Projects */}
+        <ul className="flex flex-col gap-4 mb-16">
+          {Object.entries(featuredProjects).map(([key, value]) => (
+            <ProjectCard key={key} name={key} data={value} />
+          ))}
+        </ul>
+
+        {/* Other Projects */}
+        {otherProjects && Object.keys(otherProjects).length > 0 && (
+          <section className="mb-16">
+            <h2 className="font-medium text-primary/90 text-base mb-8">other projects.</h2>
+
+            <div className="flex flex-col gap-10">
+              {Object.entries(otherProjects).map(([category, projects]) => (
+                <div key={category}>
+                  <p className="text-muted-foreground/50 text-xs uppercase tracking-widest mb-3">{category}</p>
+                  <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                    {Object.entries(projects).map(([name, proj]) => (
+                      <SmallCard key={name} name={name} data={proj} />
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        <Contact data={DATA.HEADER} />
+        <Footer />
+      </main>
 
       {!checkMobile && <TargetCursor spinDuration={2} hideDefaultCursor />}
     </div>
