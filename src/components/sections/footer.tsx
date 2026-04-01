@@ -11,7 +11,7 @@ export function Footer() {
   return (
     <div className="flex max-md:flex-col justify-between items-center max-md:gap-2 py-5 md:py-10 border-gray-800 border-t">
       <p className="text-muted-foreground text-base text-center" suppressHydrationWarning>
-        &copy; {new Date().getFullYear()} · Syeda Khadeeja
+        &copy; {new Date().getFullYear()} · xyz
       </p>
       <button
         className="flex items-center gap-2 w-fit text-muted-foreground text-base cursor-pointer"

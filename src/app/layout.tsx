@@ -69,7 +69,7 @@ export default function RootLayout({
   const personSchema = {
     "@context": "https://schema.org",
     "@type": "Person",
-    name: "Syeda Khadeeja",
+    name: "xyz",
     url: "https://skz.dev/",
     jobTitle: "Creative Computing Student · Web Developer",
     sameAs: [
@@ -87,7 +87,7 @@ export default function RootLayout({
         <meta name="description" content={metaDescription} />
         <meta name="keywords" content={metaKeywords.join(", ")} />
         <link rel="canonical" href="https://skz.dev/" />
-        <meta name="author" content="Syeda Khadeeja" />
+        <meta name="author" content="xyz" />
         <meta name="darkreader-lock" content="darkreader-inline-stroke darkreader-inline-fill" />
       </head>
       <body
