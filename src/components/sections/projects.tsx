@@ -91,7 +91,7 @@ function ProjectCard({ name, data }: { name: string; data: IProjectData }) {
 
             {/* Description */}
             <p className="text-muted-foreground text-sm leading-relaxed">
-              {data.DESCRIPTION}
+              {data.SHORT_DESCRIPTION}
             </p>
           </div>
 
