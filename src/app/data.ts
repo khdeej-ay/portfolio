@@ -17,7 +17,7 @@ export interface IOtherProjectData {
 
 export const DATA = {
   HEADER: {
-    NAME: "xyz",
+    NAME: "Syeda Khadeeja",
     PRONOUN: "she/her",
     HEADLINE: "Full-Stack Developer",
     RESUME: "/resume.pdf",
