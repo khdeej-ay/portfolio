@@ -73,8 +73,8 @@ export default function RootLayout({
     url: "https://skz.dev/",
     jobTitle: "Creative Computing Student · Web Developer",
     sameAs: [
-      "https://github.com/pragnyanramtha",
-      "https://www.linkedin.com/in/pragnyanramtha",
+      "https://github.com/khd33j",
+      "https://www.linkedin.com/in/khdeej",
     ],
     description: metaDescription,
   };
