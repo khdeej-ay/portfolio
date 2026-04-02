@@ -1,4 +1,4 @@
-# xyz – Personal Portfolio
+# Syeda Khadeeja – Personal Portfolio
 
 My personal portfolio website, built with Next.js and Tailwind CSS. It showcases my projects, skills, and experience as a Creative Computing student and full-stack developer.
 
