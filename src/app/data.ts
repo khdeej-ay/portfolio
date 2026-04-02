@@ -22,7 +22,7 @@ export const DATA = {
     HEADLINE: "Full-Stack Developer",
     RESUME: "/resume.pdf",
     EMAIL: "mailto:s.khdeej@gmail.com",
-    GITHUB: "https://github.com/khdeej-ay",
+    GITHUB: "https://github.com/khd33j",
     LINKEDIN: "https://www.linkedin.com/in/khdeej",
   },
 
