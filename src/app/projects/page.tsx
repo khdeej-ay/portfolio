@@ -6,6 +6,7 @@ import GridPattern from "@/components/ui/grid-pattern";
 import TargetCursor from "@/components/ui/target-cursor";
 import useMobileDetection from "@/hooks/use-mobile";
 import { ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 import Image from "next/image";
 
 // ── Types ──────────────────────────────────────────────────────────────────────
@@ -55,7 +56,12 @@ function ProjectCard({ name, data }: { name: string; data: IFeaturedProject }) {
 
           {/* Title row */}
           <div className="flex flex-wrap items-center gap-2">
-            <h3 className="text-primary/90 text-lg font-medium">{name}</h3>
+            <Link
+              href={`/projects/${name.toLowerCase().replace(/\s+/g, "-")}`}
+              className="text-primary/90 text-lg font-medium hover:text-primary transition-colors"
+            >
+              {name}
+            </Link>
 
             {data.NOTE && (
               <span className="text-[10px] font-medium bg-primary/10 text-primary/60 border border-primary/20 px-2 py-0.5 rounded-full">
