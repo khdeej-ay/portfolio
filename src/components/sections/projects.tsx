@@ -1,3 +1,5 @@
+"use client";
+
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -49,7 +51,12 @@ function ProjectCard({ name, data }: { name: string; data: IProjectData }) {
           <div className="flex flex-col gap-2">
             {/* Name + note + links */}
             <div className="flex flex-wrap items-center gap-2">
-              <h3 className="text-primary/90 text-lg font-medium leading-tight">{name}</h3>
+              <Link
+                href={`/projects/${name.toLowerCase().replace(/\s+/g, "-")}`}
+                className="text-primary/90 text-lg font-medium leading-tight hover:text-primary transition-colors"
+              >
+                {name}
+              </Link>
               {data.NOTE && (
                 <span className="text-[10px] font-medium bg-primary/10 text-primary/60 px-2 py-0.5 rounded-full border border-primary/20">
                   {data.NOTE}
